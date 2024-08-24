@@ -1,0 +1,10 @@
+app/images/*
+app/videos/*
+app/output/*
+
+.grip
+
+!app/main.py
+!app/images/.gitkeep
+!app/videos/.gitkeep
+!app/output/.gitkeep
