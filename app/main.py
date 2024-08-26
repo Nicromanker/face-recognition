@@ -17,6 +17,7 @@ for file in os.listdir(directory):
         person_image = cv2.cvtColor(cv2.imread(
             f'app/images/{filename}'
         ), cv2.COLOR_BGR2RGB)
+        print('Studing file ' + filename)
         person_face_encoding = face_recognition.face_encodings(person_image)[0]
 
         known_face_encoding.append(person_face_encoding)
@@ -47,7 +48,6 @@ while True:
     ret, frame = capture.read()
 
     if ret:
-
         face_names = []
         if process_current_frame:
 
@@ -66,7 +66,6 @@ while True:
                     known_face_encoding,
                     face_encoding
                 )
-
                 name = "Unknown"
 
                 face_distances = face_recognition.face_distance(
@@ -79,8 +78,7 @@ while True:
                     name = known_face_names[best_match_index]
                 face_names.append(name)
 
-            process_current_frame = not process_current_frame
-
+        process_current_frame = not process_current_frame
         for (top, right, bottom, left), name in zip(
             face_locations,
             face_names
